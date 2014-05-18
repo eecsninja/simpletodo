@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -35,6 +37,8 @@ public class TodoActivity extends ActionBarActivity {
 		lvItems.setAdapter(itemsAdapter);
 		items.add("First Item");
 		items.add("Second Item");
+
+		setupListViewListener();
 	}
 
 	@Override
@@ -61,5 +65,17 @@ public class TodoActivity extends ActionBarActivity {
 		EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
 		itemsAdapter.add(etNewItem.getText().toString());
 		etNewItem.setText("");
+	}
+
+	private void setupListViewListener() {
+		lvItems.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long rowId) {
+				items.remove(position);
+				itemsAdapter.notifyDataSetChanged();
+				return true;
+			}
+		});
 	}
 }
