@@ -7,5 +7,7 @@
     <string name="hintString">Enter new item</string>
     <string name="buttonAddString">Add</string>
     <string name="title_activity_edit_item">EditItemActivity</string>
+    <string name="editTextInstructions">Edit Item Below:</string>
+    <string name="editSaveButton">Save</string>
 
 </resources>
