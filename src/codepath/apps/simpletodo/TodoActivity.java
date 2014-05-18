@@ -1,5 +1,7 @@
 package codepath.apps.simpletodo;
 
+import java.util.ArrayList;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -9,9 +11,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.os.Build;
 
 public class TodoActivity extends ActionBarActivity {
+	ArrayList<String> items;
+	ArrayAdapter<String> itemsAdapter;
+	ListView lvItems;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,16 @@ public class TodoActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+
+		lvItems = (ListView) findViewById(R.id.lvItems);
+		items = new ArrayList<String>();
+		itemsAdapter = new ArrayAdapter<String>(
+			this,
+			android.R.layout.simple_list_item_1,
+			items);
+		lvItems.setAdapter(itemsAdapter);
+		items.add("First Item");
+		items.add("Second Item");
 	}
 
 	@Override
