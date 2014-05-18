@@ -1197,8 +1197,7 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_todo=0x7f030018;
-        public static final int fragment_todo=0x7f030019;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f030019;
     }
     public static final class menu {
         public static final int todo=0x7f0c0000;
