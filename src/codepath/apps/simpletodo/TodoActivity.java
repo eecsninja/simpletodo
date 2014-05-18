@@ -41,9 +41,10 @@ public class TodoActivity extends ActionBarActivity {
 			android.R.layout.simple_list_item_1,
 			items);
 		lvItems.setAdapter(itemsAdapter);
-		items.add("First Item");
-		items.add("Second Item");
-
+		if (items.isEmpty()) {
+			items.add("First Item");
+			items.add("Second Item");
+		}
 		setupListViewListener();
 	}
 
