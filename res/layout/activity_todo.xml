@@ -6,4 +6,36 @@
     tools:context="codepath.apps.simpletodo.TodoActivity"
     tools:ignore="MergeRootFrame" >
 
+    <EditText
+        android:id="@+id/etNewItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="17dp"
+        android:ems="10"
+        android:hint="@string/hintString" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnAddItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etNewItem"
+        android:layout_toRightOf="@+id/etNewItem"
+        android:text="@string/buttonAddString" />
+
+    <ListView
+        android:id="@+id/lvItems"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_above="@+id/btnAddItem"
+        android:layout_alignLeft="@+id/etNewItem"
+        android:layout_alignRight="@+id/btnAddItem" >
+
+    </ListView>
+
 </RelativeLayout>
