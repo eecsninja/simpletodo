@@ -92,6 +92,7 @@ public class TodoActivity extends ActionBarActivity {
 				items.set(position, value);
 			}
 			lvItems.invalidateViews();
+			saveItems();
 		}
 	}
 
