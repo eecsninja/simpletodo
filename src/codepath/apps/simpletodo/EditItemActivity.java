@@ -9,14 +9,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.os.Build;
 
 public class EditItemActivity extends ActionBarActivity {
+	EditText textField;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_item);
+
+		textField = (EditText) findViewById(R.id.etEditItem);
+		String fieldValue = getIntent().getStringExtra("value");
+		textField.setText(fieldValue);
 	}
 
 	@Override

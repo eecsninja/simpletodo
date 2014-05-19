@@ -9,13 +9,16 @@ import org.apache.commons.io.FileUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -84,6 +87,17 @@ public class TodoActivity extends ActionBarActivity {
 				itemsAdapter.notifyDataSetChanged();
 				saveItems();
 				return true;
+			}
+		});
+		lvItems.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Intent intent = new Intent(TodoActivity.this, EditItemActivity.class);
+				intent.putExtra("position", position);
+				intent.putExtra("rowId", id);
+				intent.putExtra("value", items.get(position));
+				startActivity(intent);
 			}
 		});
 	}
