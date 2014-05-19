@@ -36,6 +36,7 @@
         android:layout_alignLeft="@+id/etEditItem"
         android:layout_below="@+id/etEditItem"
         android:layout_marginTop="24dp"
+        android:onClick="onSave"
         android:text="@string/editSaveButton" />
 
 </RelativeLayout>

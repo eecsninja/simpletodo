@@ -30,6 +30,9 @@ public class TodoActivity extends ActionBarActivity {
 	ArrayAdapter<String> itemsAdapter;
 	ListView lvItems;
 
+	// For getting result back from EditItemActivity.
+	private final int EDIT_ITEM_CODE = 1337;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -78,6 +81,20 @@ public class TodoActivity extends ActionBarActivity {
 		saveItems();
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		EditText textField = (EditText) findViewById(R.id.etNewItem);
+		textField.setText("res=" + resultCode + ", req=" + requestCode);
+		if (resultCode == RESULT_OK && requestCode == EDIT_ITEM_CODE) {
+			String value = data.getExtras().getString("value");
+			int position = data.getExtras().getInt("position");
+			if (position < items.size()) {
+				items.set(position, value);
+			}
+			lvItems.invalidateViews();
+		}
+	}
+
 	private void setupListViewListener() {
 		lvItems.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
@@ -97,7 +114,7 @@ public class TodoActivity extends ActionBarActivity {
 				intent.putExtra("position", position);
 				intent.putExtra("rowId", id);
 				intent.putExtra("value", items.get(position));
-				startActivity(intent);
+				startActivityForResult(intent, EDIT_ITEM_CODE);
 			}
 		});
 	}
