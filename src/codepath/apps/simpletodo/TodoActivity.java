@@ -83,8 +83,6 @@ public class TodoActivity extends ActionBarActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		EditText textField = (EditText) findViewById(R.id.etNewItem);
-		textField.setText("res=" + resultCode + ", req=" + requestCode);
 		if (resultCode == RESULT_OK && requestCode == EDIT_ITEM_CODE) {
 			String value = data.getExtras().getString("value");
 			int position = data.getExtras().getInt("position");
